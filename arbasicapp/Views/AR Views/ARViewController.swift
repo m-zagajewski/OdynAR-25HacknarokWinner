@@ -7,46 +7,11 @@ class ARViewController: UIViewController, ARSessionDelegate {
     private var arView: ARView!
     private var subscriptions = Set<AnyCancellable>()
     private var sceneScale: SIMD3<Float> = .one  // domyślna wartość
-    @objc private func placeModel() {
-        let modelEntity: ModelEntity
-        do {
-            let model = try Entity.loadModel(named: "toy_biplane") // ← twój model w ModelAssets
-            modelEntity = model
-        } catch {
-            print("Nie udało się załadować modelu: \(error)")
-            return
-        }
-
-        modelEntity.generateCollisionShapes(recursive: true)
-        arView.installGestures([.translation, .rotation, .scale], for: modelEntity)
-
-        let cameraTransform = arView.cameraTransform
-        let position = cameraTransform.matrix.columns.3
-        modelEntity.position = SIMD3(position.x, position.y - 0.1, position.z - 0.5)
-
-        let anchor = AnchorEntity(world: modelEntity.position)
-        anchor.addChild(modelEntity)
-        arView.scene.addAnchor(anchor)
-    }
-
-    private func addModelPlacementButton() {
-        let button = UIButton(type: .system)
-        button.setTitle("Dodaj model", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        button.layer.cornerRadius = 10
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        button.frame = CGRect(x: 20, y: view.bounds.height - 80, width: 150, height: 50)
-        button.autoresizingMask = [.flexibleTopMargin, .flexibleRightMargin]
-        button.addTarget(self, action: #selector(placeModel), for: .touchUpInside)
-        view.addSubview(button)
-    }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupARView()
         runImageTracking()
-        addModelPlacementButton()
     }
 
     func setup() {

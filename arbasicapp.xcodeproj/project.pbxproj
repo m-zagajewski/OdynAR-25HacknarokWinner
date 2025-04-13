@@ -25,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		71062C902DAB818600FAE098 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA008BD0296E737C00896C0A /* AnimatingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatingModel.swift; sourceTree = "<group>"; };
 		BAFB9FB2296A74CA00F9165E /* arbasicapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arbasicapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAFB9FB5296A74CA00F9165E /* arbasicappApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = arbasicappApp.swift; sourceTree = "<group>"; };
@@ -75,6 +76,7 @@
 		BAFB9FB4296A74CA00F9165E /* arbasicapp */ = {
 			isa = PBXGroup;
 			children = (
+				71062C902DAB818600FAE098 /* Info.plist */,
 				BAFB9FD6296B9EBC00F9165E /* ModelAssets */,
 				BAFB9FED296C53C000F9165E /* App */,
 				BAFB9FC6296A811200F9165E /* Views */,
