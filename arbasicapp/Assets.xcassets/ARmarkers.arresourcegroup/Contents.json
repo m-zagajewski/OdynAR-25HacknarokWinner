@@ -4,29 +4,6 @@
     "version" : 1
   },
   "resources" : [
-    {
-      "filename" : " marker3.arreferenceimage"
-    },
-    {
-      "filename" : "marker1.arreferenceimage"
-    },
-    {
-      "filename" : "marker2.arreferenceimage"
-    },
-    {
-      "filename" : "marker4.arreferenceimage"
-    },
-    {
-      "filename" : "marker5.arreferenceimage"
-    },
-    {
-      "filename" : "marker6.arreferenceimage"
-    },
-    {
-      "filename" : "marker7.arreferenceimage"
-    },
-    {
-      "filename" : "marker8.arreferenceimage"
-    }
+
   ]
 }
