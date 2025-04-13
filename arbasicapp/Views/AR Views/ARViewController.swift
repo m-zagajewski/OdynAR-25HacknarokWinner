@@ -3,15 +3,54 @@ import ARKit
 import RealityKit
 import Combine
 
+
 class ARViewController: UIViewController, ARSessionDelegate {
     private var arView: ARView!
     private var subscriptions = Set<AnyCancellable>()
     private var sceneScale: SIMD3<Float> = .one  // domyślna wartość
+    
+    @objc private func placeModel() {
+        let modelEntity: ModelEntity
+        do {
+            let model = try Entity.loadModel(named: "toy_car") // ← twój model w ModelAssets
+            modelEntity = model
+        } catch {
+            print("Nie udało się załadować modelu: \(error)")
+            return
+        }
+
+        modelEntity.generateCollisionShapes(recursive: true)
+        arView.installGestures([.translation, .rotation, .scale], for: modelEntity)
+
+        let cameraTransform = arView.cameraTransform
+        let position = cameraTransform.matrix.columns.3
+        modelEntity.position = SIMD3(position.x, position.y - 0.1, position.z - 0.5)
+
+        let anchor = AnchorEntity(world: modelEntity.position)
+        anchor.addChild(modelEntity)
+        arView.scene.addAnchor(anchor)
+    }
+
+    
+    private func addModelPlacementButton() {
+        let button = UIButton(type: .system)
+        button.setTitle("Dodaj model", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        button.layer.cornerRadius = 10
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        button.frame = CGRect(x: 20, y: view.bounds.height - 80, width: 150, height: 50)
+        button.autoresizingMask = [.flexibleTopMargin, .flexibleRightMargin]
+        button.addTarget(self, action: #selector(placeModel), for: .touchUpInside)
+        view.addSubview(button)
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupARView()
         runImageTracking()
+        addModelPlacementButton()
     }
 
     func setup() {
@@ -50,22 +89,59 @@ class ARViewController: UIViewController, ARSessionDelegate {
             }
         }
     }
+    
+    private var posterOverlayView: UIView?
 
+    private func showPosterOverlay() {
+        let overlay = UIView(frame: view.bounds)
+        overlay.backgroundColor = UIColor.black.withAlphaComponent(0.85)
+
+        let imageView = UIImageView(image: UIImage(named: "posterImage")) // ← dodaj plakat do Assets
+        imageView.contentMode = .scaleAspectFit
+        imageView.frame = overlay.bounds.insetBy(dx: 20, dy: 80)
+        overlay.addSubview(imageView)
+
+        let closeButton = UIButton(type: .system)
+        closeButton.setTitle("X", for: .normal)
+        closeButton.setTitleColor(.white, for: .normal)
+        closeButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
+        closeButton.frame = CGRect(x: overlay.bounds.width - 60, y: 40, width: 40, height: 40)
+        closeButton.addTarget(self, action: #selector(dismissPosterOverlay), for: .touchUpInside)
+        overlay.addSubview(closeButton)
+
+        view.addSubview(overlay)
+        posterOverlayView = overlay
+    }
+
+    @objc private func dismissPosterOverlay() {
+        posterOverlayView?.removeFromSuperview()
+    }
+
+
+    @objc private func handleTap(_ sender: UITapGestureRecognizer) {
+        let location = sender.location(in: arView)
+        if let tappedEntity = arView.entity(at: location), tappedEntity.name == "poster" {
+            showPosterOverlay()
+        }
+    }
+
+    
     private func handleDetectedImage(_ imageAnchor: ARImageAnchor) {
-        print("WYKRYTO MARKER: \(imageAnchor.referenceImage.name ?? "brak nazwy")")
         let anchorEntity = AnchorEntity(anchor: imageAnchor)
 
-        // Tworzymy np. 3D napis
-        let textMesh = MeshResource.generateText("Witaj!", extrusionDepth: 0.01, font: .systemFont(ofSize: 0.1), containerFrame: .zero, alignment: .center, lineBreakMode: .byWordWrapping)
-        let material = SimpleMaterial(color: .blue, isMetallic: false)
-        let textEntity = ModelEntity(mesh: textMesh, materials: [material])
+        // PLANE jako plakat (2D)
+        let planeMesh = MeshResource.generatePlane(width: 0.2, height: 0.3)
+        let material = SimpleMaterial(color: .white, isMetallic: false)
+        let posterEntity = ModelEntity(mesh: planeMesh, materials: [material])
+        posterEntity.name = "poster"
+        posterEntity.generateCollisionShapes(recursive: true)
 
-        // Skalowanie
-        textEntity.scale = sceneScale
+        // Gesture rozpoznawania tapnięcia
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        arView.addGestureRecognizer(tapGesture)
 
-        // Pozycjonowanie nad markerem
-        textEntity.position = SIMD3<Float>(0, 0.05, 0)
-        anchorEntity.addChild(textEntity)
+        anchorEntity.addChild(posterEntity)
         arView.scene.addAnchor(anchorEntity)
     }
+
 }
