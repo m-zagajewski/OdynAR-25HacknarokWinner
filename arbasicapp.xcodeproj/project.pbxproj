@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		714D32CF2DABA7E700BC7668 /* Norse.otf in Resources */ = {isa = PBXBuildFile; fileRef = 714D32CE2DABA7E700BC7668 /* Norse.otf */; };
 		BA008BD1296E737C00896C0A /* AnimatingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA008BD0296E737C00896C0A /* AnimatingModel.swift */; };
 		BAFB9FB6296A74CA00F9165E /* arbasicappApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFB9FB5296A74CA00F9165E /* arbasicappApp.swift */; };
 		BAFB9FB8296A74CA00F9165E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFB9FB7296A74CA00F9165E /* ContentView.swift */; };
@@ -25,13 +26,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		713A4FD72DABA2B7000C631F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		714D32CE2DABA7E700BC7668 /* Norse.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Norse.otf; sourceTree = "<group>"; };
 		BA008BD0296E737C00896C0A /* AnimatingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatingModel.swift; sourceTree = "<group>"; };
 		BAFB9FB2296A74CA00F9165E /* arbasicapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arbasicapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAFB9FB5296A74CA00F9165E /* arbasicappApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = arbasicappApp.swift; sourceTree = "<group>"; };
 		BAFB9FB7296A74CA00F9165E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BAFB9FB9296A74CB00F9165E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BAFB9FBC296A74CB00F9165E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BAFB9FC3296A75C000F9165E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BAFB9FC8296A816500F9165E /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		BAFB9FCB296A82A600F9165E /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		BAFB9FCD296A835A00F9165E /* ARContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARContainerView.swift; sourceTree = "<group>"; };
@@ -58,7 +60,6 @@
 		BAFB9FA9296A74CA00F9165E = {
 			isa = PBXGroup;
 			children = (
-				BAFB9FC3296A75C000F9165E /* README.md */,
 				BAFB9FB4296A74CA00F9165E /* arbasicapp */,
 				BAFB9FB3296A74CA00F9165E /* Products */,
 			);
@@ -82,6 +83,7 @@
 				BAFB9FCA296A828300F9165E /* Utilities */,
 				BAFB9FB9296A74CB00F9165E /* Assets.xcassets */,
 				BAFB9FBB296A74CB00F9165E /* Preview Content */,
+				713A4FD72DABA2B7000C631F /* Info.plist */,
 			);
 			path = arbasicapp;
 			sourceTree = "<group>";
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				BAFB9FCB296A82A600F9165E /* Log.swift */,
+				714D32CE2DABA7E700BC7668 /* Norse.otf */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAFB9FBD296A74CB00F9165E /* Preview Assets.xcassets in Resources */,
+				714D32CF2DABA7E700BC7668 /* Norse.otf in Resources */,
 				BAFB9FBA296A74CB00F9165E /* Assets.xcassets in Resources */,
 				BAFB9FEA296C4A2600F9165E /* toy_car.usdz in Resources */,
 				BAFB9FDA296B9ED600F9165E /* toy_biplane.usdz in Resources */,
