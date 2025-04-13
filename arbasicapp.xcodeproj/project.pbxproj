@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7135E01D2DAB8BF6009E7DBF /* Norse.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7135E01C2DAB8BF6009E7DBF /* Norse.otf */; };
 		BA008BD1296E737C00896C0A /* AnimatingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA008BD0296E737C00896C0A /* AnimatingModel.swift */; };
 		BAFB9FB6296A74CA00F9165E /* arbasicappApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFB9FB5296A74CA00F9165E /* arbasicappApp.swift */; };
 		BAFB9FB8296A74CA00F9165E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFB9FB7296A74CA00F9165E /* ContentView.swift */; };
@@ -18,31 +19,25 @@
 		BAFB9FD1296ACB2200F9165E /* ARScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFB9FD0296ACB2200F9165E /* ARScene.swift */; };
 		BAFB9FD3296AD49300F9165E /* ARSceneSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFB9FD2296AD49300F9165E /* ARSceneSpec.swift */; };
 		BAFB9FD5296B991E00F9165E /* ARContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFB9FD4296B991E00F9165E /* ARContentView.swift */; };
-		BAFB9FD8296B9ECE00F9165E /* toy_robot_vintage.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BAFB9FD7296B9ECE00F9165E /* toy_robot_vintage.usdz */; };
-		BAFB9FDA296B9ED600F9165E /* toy_biplane.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BAFB9FD9296B9ED600F9165E /* toy_biplane.usdz */; };
 		BAFB9FDC296BF65900F9165E /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFB9FDB296BF65900F9165E /* AppConfig.swift */; };
-		BAFB9FEA296C4A2600F9165E /* toy_car.usdz in Resources */ = {isa = PBXBuildFile; fileRef = BAFB9FE9296C4A2600F9165E /* toy_car.usdz */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		71062C902DAB818600FAE098 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7135E01C2DAB8BF6009E7DBF /* Norse.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Norse.otf; sourceTree = "<group>"; };
 		BA008BD0296E737C00896C0A /* AnimatingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatingModel.swift; sourceTree = "<group>"; };
 		BAFB9FB2296A74CA00F9165E /* arbasicapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arbasicapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAFB9FB5296A74CA00F9165E /* arbasicappApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = arbasicappApp.swift; sourceTree = "<group>"; };
 		BAFB9FB7296A74CA00F9165E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BAFB9FB9296A74CB00F9165E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BAFB9FBC296A74CB00F9165E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BAFB9FC3296A75C000F9165E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BAFB9FC8296A816500F9165E /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		BAFB9FCB296A82A600F9165E /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		BAFB9FCD296A835A00F9165E /* ARContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARContainerView.swift; sourceTree = "<group>"; };
 		BAFB9FD0296ACB2200F9165E /* ARScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARScene.swift; sourceTree = "<group>"; };
 		BAFB9FD2296AD49300F9165E /* ARSceneSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARSceneSpec.swift; sourceTree = "<group>"; };
 		BAFB9FD4296B991E00F9165E /* ARContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARContentView.swift; sourceTree = "<group>"; };
-		BAFB9FD7296B9ECE00F9165E /* toy_robot_vintage.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = toy_robot_vintage.usdz; sourceTree = "<group>"; };
-		BAFB9FD9296B9ED600F9165E /* toy_biplane.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = toy_biplane.usdz; sourceTree = "<group>"; };
 		BAFB9FDB296BF65900F9165E /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
-		BAFB9FE9296C4A2600F9165E /* toy_car.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = toy_car.usdz; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +54,6 @@
 		BAFB9FA9296A74CA00F9165E = {
 			isa = PBXGroup;
 			children = (
-				BAFB9FC3296A75C000F9165E /* README.md */,
 				BAFB9FB4296A74CA00F9165E /* arbasicapp */,
 				BAFB9FB3296A74CA00F9165E /* Products */,
 			);
@@ -77,7 +71,6 @@
 			isa = PBXGroup;
 			children = (
 				71062C902DAB818600FAE098 /* Info.plist */,
-				BAFB9FD6296B9EBC00F9165E /* ModelAssets */,
 				BAFB9FED296C53C000F9165E /* App */,
 				BAFB9FC6296A811200F9165E /* Views */,
 				BAFB9FCF296ACB0500F9165E /* AR Scenes */,
@@ -119,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				BAFB9FCB296A82A600F9165E /* Log.swift */,
+				7135E01C2DAB8BF6009E7DBF /* Norse.otf */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -131,16 +125,6 @@
 				BAFB9FD2296AD49300F9165E /* ARSceneSpec.swift */,
 			);
 			path = "AR Scenes";
-			sourceTree = "<group>";
-		};
-		BAFB9FD6296B9EBC00F9165E /* ModelAssets */ = {
-			isa = PBXGroup;
-			children = (
-				BAFB9FD9296B9ED600F9165E /* toy_biplane.usdz */,
-				BAFB9FD7296B9ECE00F9165E /* toy_robot_vintage.usdz */,
-				BAFB9FE9296C4A2600F9165E /* toy_car.usdz */,
-			);
-			path = ModelAssets;
 			sourceTree = "<group>";
 		};
 		BAFB9FED296C53C000F9165E /* App */ = {
@@ -212,10 +196,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAFB9FBD296A74CB00F9165E /* Preview Assets.xcassets in Resources */,
+				7135E01D2DAB8BF6009E7DBF /* Norse.otf in Resources */,
 				BAFB9FBA296A74CB00F9165E /* Assets.xcassets in Resources */,
-				BAFB9FEA296C4A2600F9165E /* toy_car.usdz in Resources */,
-				BAFB9FDA296B9ED600F9165E /* toy_biplane.usdz in Resources */,
-				BAFB9FD8296B9ECE00F9165E /* toy_robot_vintage.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

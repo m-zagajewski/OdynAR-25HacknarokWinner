@@ -25,7 +25,7 @@ struct ContentView: View {
                 VStack {
                     // Title with runic styling vibe
                     Text("PRZETRWAJ RAGNAROK")
-                        .font(.custom("Copperplate", size: 35))
+                        .font(.custom("Norse", size: 35))
                         .foregroundColor(.white)
                         .kerning(2)
                         .multilineTextAlignment(.center)

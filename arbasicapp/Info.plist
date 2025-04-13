@@ -4,6 +4,10 @@
 <dict>
 	<key>LSMinimumSystemVersion</key>
 	<string>13.0</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Norse.otf</string>
+	</array>
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIColorName</key>

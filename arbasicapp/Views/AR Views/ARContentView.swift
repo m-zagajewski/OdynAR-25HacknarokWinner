@@ -34,7 +34,7 @@ struct ARContentView: View {
                     }
                     .padding(.trailing, 24)
                 }
-                .padding(.top, 50)
+                .padding(.top, 20)
                 
                 Spacer()
                 
