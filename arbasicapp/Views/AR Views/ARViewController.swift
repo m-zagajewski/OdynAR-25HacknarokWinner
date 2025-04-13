@@ -3,7 +3,6 @@ import ARKit
 import RealityKit
 import Combine
 
-
 class ARViewController: UIViewController, ARSessionDelegate {
     private var arView: ARView!
     private var subscriptions = Set<AnyCancellable>()
@@ -12,7 +11,7 @@ class ARViewController: UIViewController, ARSessionDelegate {
     @objc private func placeModel() {
         let modelEntity: ModelEntity
         do {
-            let model = try Entity.loadModel(named: "toy_car") // ← twój model w ModelAssets
+            let model = try Entity.loadModel(named: "toy_biplane") // ← twój model w ModelAssets
             modelEntity = model
         } catch {
             print("Nie udało się załadować modelu: \(error)")
@@ -31,6 +30,7 @@ class ARViewController: UIViewController, ARSessionDelegate {
         arView.scene.addAnchor(anchor)
     }
 
+    
     
     private func addModelPlacementButton() {
         let button = UIButton(type: .system)
@@ -54,13 +54,11 @@ class ARViewController: UIViewController, ARSessionDelegate {
     }
 
     func setup() {
-        // Można zainicjalizować wszystko od zera, jeśli potrzeba
-        // Ale my to robimy już w viewDidLoad, więc nie trzeba nic tu robić
+
     }
 
     func update(sceneScale: SIMD3<Float>) {
         self.sceneScale = sceneScale
-        // W razie potrzeby można zaktualizować rozmiar modelu
     }
 
     private func setupARView() {
@@ -117,7 +115,7 @@ class ARViewController: UIViewController, ARSessionDelegate {
         posterOverlayView?.removeFromSuperview()
     }
 
-
+    
     @objc private func handleTap(_ sender: UITapGestureRecognizer) {
         let location = sender.location(in: arView)
         if let tappedEntity = arView.entity(at: location), tappedEntity.name == "poster" {
@@ -125,18 +123,26 @@ class ARViewController: UIViewController, ARSessionDelegate {
         }
     }
 
-    
+
     private func handleDetectedImage(_ imageAnchor: ARImageAnchor) {
-        let anchorEntity = AnchorEntity(anchor: imageAnchor)
+        let transform = Transform(matrix: imageAnchor.transform)
+        let anchorEntity = AnchorEntity(world: transform.translation)
 
         // PLANE jako plakat (2D)
         let planeMesh = MeshResource.generatePlane(width: 0.2, height: 0.3)
         let material = SimpleMaterial(color: .white, isMetallic: false)
         let posterEntity = ModelEntity(mesh: planeMesh, materials: [material])
         posterEntity.name = "poster"
+        
+        // Ustawiamy orientację zgodnie z markerem
+        posterEntity.transform.rotation *= simd_quatf(angle: -.pi / 2, axis: [1, 0, 0])
+
+
+        // Opcjonalnie — przesunięcie plakatu lekko "do przodu", aby nie migał z markerem
+        posterEntity.position.z += 0.001 // zależnie od potrzeb
+
         posterEntity.generateCollisionShapes(recursive: true)
 
-        // Gesture rozpoznawania tapnięcia
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         arView.addGestureRecognizer(tapGesture)
 
