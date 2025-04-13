@@ -7,7 +7,6 @@ class ARViewController: UIViewController, ARSessionDelegate {
     private var arView: ARView!
     private var subscriptions = Set<AnyCancellable>()
     private var sceneScale: SIMD3<Float> = .one  // domyślna wartość
-    
     @objc private func placeModel() {
         let modelEntity: ModelEntity
         do {
@@ -30,8 +29,6 @@ class ARViewController: UIViewController, ARSessionDelegate {
         arView.scene.addAnchor(anchor)
     }
 
-    
-    
     private func addModelPlacementButton() {
         let button = UIButton(type: .system)
         button.setTitle("Dodaj model", for: .normal)
@@ -44,7 +41,6 @@ class ARViewController: UIViewController, ARSessionDelegate {
         button.addTarget(self, action: #selector(placeModel), for: .touchUpInside)
         view.addSubview(button)
     }
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,14 +83,13 @@ class ARViewController: UIViewController, ARSessionDelegate {
             }
         }
     }
-    
     private var posterOverlayView: UIView?
 
     private func showPosterOverlay() {
         let overlay = UIView(frame: view.bounds)
         overlay.backgroundColor = UIColor.black.withAlphaComponent(0.85)
 
-        let imageView = UIImageView(image: UIImage(named: "posterImage")) // ← dodaj plakat do Assets
+        let imageView = UIImageView(image: UIImage(named: "imagePoster")) // ← dodaj plakat do Assets
         imageView.contentMode = .scaleAspectFit
         imageView.frame = overlay.bounds.insetBy(dx: 20, dy: 80)
         overlay.addSubview(imageView)
@@ -115,7 +110,6 @@ class ARViewController: UIViewController, ARSessionDelegate {
         posterOverlayView?.removeFromSuperview()
     }
 
-    
     @objc private func handleTap(_ sender: UITapGestureRecognizer) {
         let location = sender.location(in: arView)
         if let tappedEntity = arView.entity(at: location), tappedEntity.name == "poster" {
@@ -123,31 +117,35 @@ class ARViewController: UIViewController, ARSessionDelegate {
         }
     }
 
-
     private func handleDetectedImage(_ imageAnchor: ARImageAnchor) {
-        let transform = Transform(matrix: imageAnchor.transform)
-        let anchorEntity = AnchorEntity(world: transform.translation)
+        let imageName = imageAnchor.referenceImage.name ?? ""
+        let posterImageName = "posterImage_" + imageName  // np. "posterImage_marker1"
 
-        // PLANE jako plakat (2D)
+        guard let texture = try? TextureResource.load(named: posterImageName) else {
+            print("Nie udało się załadować tekstury dla: \(posterImageName)")
+            return
+        }
+
+        var material = UnlitMaterial()
+        material.baseColor = .texture(texture)
+
         let planeMesh = MeshResource.generatePlane(width: 0.2, height: 0.3)
-        let material = SimpleMaterial(color: .white, isMetallic: false)
         let posterEntity = ModelEntity(mesh: planeMesh, materials: [material])
         posterEntity.name = "poster"
-        
-        // Ustawiamy orientację zgodnie z markerem
-        posterEntity.transform.rotation *= simd_quatf(angle: -.pi / 2, axis: [1, 0, 0])
 
+        // Transformacja do ściany (rotacja)
+        let transform = Transform(matrix: imageAnchor.transform)
+        posterEntity.transform.rotation = transform.rotation * simd_quatf(angle: -.pi / 2, axis: [1, 0, 0])
+        posterEntity.position.z += 0.001
 
-        // Opcjonalnie — przesunięcie plakatu lekko "do przodu", aby nie migał z markerem
-        posterEntity.position.z += 0.001 // zależnie od potrzeb
-
+        let anchorEntity = AnchorEntity(anchor: imageAnchor)
         posterEntity.generateCollisionShapes(recursive: true)
+        anchorEntity.addChild(posterEntity)
+        arView.scene.addAnchor(anchorEntity)
 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         arView.addGestureRecognizer(tapGesture)
-
-        anchorEntity.addChild(posterEntity)
-        arView.scene.addAnchor(anchorEntity)
     }
+
 
 }
