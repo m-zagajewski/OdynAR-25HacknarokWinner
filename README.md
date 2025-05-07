@@ -73,12 +73,6 @@ The app tracks a custom image from the user’s environment, places a 3D plane o
 
 ---
 
-### 📸 Demo
-
-> _[Insert GIF or screenshots of your app here]_
-
----
-
 ### 🏷 Hashtags
 
 #Hacknarok #AR #AugmentedReality #Hackathon #Teamwork
