@@ -1,4 +1,4 @@
-# PosterPortals — Augmented Reality Poster Viewer
+# OdynAR — Augmented Reality Poster Viewer
 
 🏆 **1st Place Winner** at **Hacknarok Hackathon** in the **Mobile Augmented Reality** category! 🚀
 
